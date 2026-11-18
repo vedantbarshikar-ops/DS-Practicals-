@@ -1,0 +1,51 @@
+# Program for Linear Search and Binary Search
+
+# Linear Search
+def linear_search(a, key):
+    for i in range(len(a)):
+        if a[i] == key:
+            return i
+    return -1
+
+
+# Binary Search
+def binary_search(a, key):
+    low = 0
+    high = len(a) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if a[mid] == key:
+            return mid
+        elif key > a[mid]:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return -1
+
+
+# Main Program
+a = list(map(int, input("Enter account IDs: ").split()))
+key = int(input("Enter account ID to search: "))
+
+# Linear Search
+result = linear_search(a, key)
+
+if result != -1:
+    print("Linear Search: Account ID found")
+else:
+    print("Linear Search: Account ID not found")
+
+# Binary Search
+a.sort()
+result = binary_search(a, key)
+
+if result != -1:
+    print("Binary Search: Account ID found")
+else:
+    print("Binary Search: Account ID not found")
+
+print("Linear Search Time Complexity: O(n)")
+print("Binary Search Time Complexity: O(log n)")
